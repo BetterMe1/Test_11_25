@@ -1,0 +1,33 @@
+'''编写程序，将包含学生成绩的字典保存为二进制文件，然后再读取内容并显示。'''
+import pickle
+keys = ['湘玉', '老白', '芙蓉', '秀才']
+values = [90, 85, 89, 92]
+dictionary = dict(zip(keys, values))
+print(dictionary)
+with open('score.dat','wb') as f:
+    try:
+        pickle.dump(dictionary, f)
+        f.close()
+    except:
+        print('写文件异常!')
+with open('score.dat','rb') as f:
+    x = pickle.load(f)
+    f.close()
+print(x)
+#或者
+f=open('score.dat','wb')
+pickle.dump(1,f)
+pickle.dump(dictionary,f)
+f.close
+f=open('score.dat','rb')
+pickle.load(f)
+dictionary=pickle.load(f)
+f.close()
+print(dictionary)
+'''
+异常和错误的区别：
+语法错误和逻辑错误不属于异常，但有些语法错误往往会导致异常，
+例如由于大小写拼写错误而访问不存在的对象。异常是指因为程序
+出错而在正常控制流以外采取的行为。当Python检测到一个错误时，
+解释器就会指出当前流已无法继续执行下去，这时候就出现了异常。
+'''

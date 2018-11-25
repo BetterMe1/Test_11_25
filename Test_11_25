@@ -1,0 +1,29 @@
+s = {'a':1, 'b':2, 'c':3}
+b, c, d = s.items()
+print(b)
+b, c, d = s                         #使用字典时不用太多考虑元素的顺序
+print(b)
+b, c, d = s.values()
+print(b, c, d)
+
+import string
+import random
+x = string.ascii_letters + string.digits + string.punctuation
+y = [random.choice(x) for i in range(1000)]
+z = ''.join(y)
+d = dict()                  #使用字典保存每个字符出现次数
+for ch in z:
+    d[ch] = d.get(ch, 0) + 1
+print(d)
+
+'''使用列表来生成number个介于start和end之间的不重复随机数'''
+def RandomNumber(Number,start,end):
+    data=set()
+    while True:
+        data.add(random.randint(start,end))
+        if len(data)==Number:
+            break
+    print(data)
+    return data
+RandomNumber(5,1,10)
+
